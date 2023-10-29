@@ -1,3 +1,4 @@
+import 'package:boycott_center/common/icon_constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,8 +24,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      margin: const EdgeInsets.only(left: 33, right: 33, bottom: 20),
+      height: 63,
+      margin: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -37,16 +38,51 @@ class _CustomNavBarState extends State<CustomNavBar> {
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildNavItem(0, Icons.home_outlined, "Home", const Color(0xff71828A)),
-          _buildNavItem(1, CupertinoIcons.search, "Search", const Color(0xff71828A)),
-          _buildNavItem(2, Icons.add_card_sharp, "Add", const Color(0xff71828A)),
+          _buildNavItem(0, homeIcon, "", const Color(0xff71828A)),
+          _buildNavItem(1, searchIcon, "", const Color(0xff71828A)),
+          _buildNavItem(2, scannerIcon, "", const Color(0xff71828A)),
+          _buildNavItem(3, justStartedIcon, "", const Color(0xff71828A)),
+          _buildNavItemWithIcon(4, Icons.account_circle_outlined, "", const Color(0xff71828A)),
         ],
       ),
     );
   }
 
-  Widget _buildNavItem(int index, IconData icon, String label, Color iconColor) {
+  Widget _buildNavItem(int index, String icon, String label, Color iconColor) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => _onItemTapped(index),
+        child: Container(
+          margin: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            color: _selectedIndex == index ? const Color(0xffEEF8F5) : null,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                icon,
+                color: _selectedIndex == index ? const Color(0xff52B69A) : iconColor,
+              ),
+              // Text(
+              //   label,
+              //   style: TextStyle(
+              //     color: _selectedIndex == index ? const Color(0xff52B69A) : iconColor,
+              //   ),
+              // ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItemWithIcon(int index, IconData icon, String label, Color iconColor) {
     return Expanded(
       child: GestureDetector(
         onTap: () => _onItemTapped(index),
@@ -63,12 +99,12 @@ class _CustomNavBarState extends State<CustomNavBar> {
                 icon,
                 color: _selectedIndex == index ? const Color(0xff52B69A) : iconColor,
               ),
-              Text(
-                label,
-                style: TextStyle(
-                  color: _selectedIndex == index ? const Color(0xff52B69A) : iconColor,
-                ),
-              ),
+              // Text(
+              //   label,
+              //   style: TextStyle(
+              //     color: _selectedIndex == index ? const Color(0xff52B69A) : iconColor,
+              //   ),
+              // ),
             ],
           ),
         ),

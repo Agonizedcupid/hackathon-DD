@@ -1,0 +1,9 @@
+const String impactIcon = "assets/icons/impact_icon.png";
+const String justStartedIcon = "assets/icons/just_started_icon.png";
+const String radarIcon = "assets/icons/radar.png";
+const String scannerIcon = "assets/icons/scanner_icon.png";
+const String trendingIcon = "assets/icons/trending_icon.png";
+const String homeIcon = "assets/icons/home_icon.png";
+const String searchIcon = "assets/icons/search_icon.png";
+const String flagIcon = "assets/images/flag.png";
+const String israilFlagIcon = "assets/images/israil.png";
